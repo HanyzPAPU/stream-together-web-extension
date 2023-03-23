@@ -170,7 +170,7 @@ export class Host extends EventEmitter {
             if (!this.personalData) {
                 return;
             }
-
+            //! Sending data using peerjs
             const data: SessionPort.RemoteMessage = {
                 ...message,
                 friends: [
@@ -214,6 +214,7 @@ export class Host extends EventEmitter {
             this.#observers.delete(port);
         });
 
+        //! Messaging setup
         port.onMessage.addListener((message: PopupPort.LocalOutMessage) => {
             if (message.type === PopupPort.MessageType.Reset) {
                 this.#log("Resetting and retrying session");
